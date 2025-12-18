@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Painel de Bordo Profissional - KAEFER Teckma</title>
+    <title>Painel de Bordo Profissional - Gerdau</title>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
@@ -23,13 +23,15 @@
         .tab-bor, .tab-prod { width: 100%; border-collapse: collapse; font-size: 11px; table-layout: fixed; border: 1.5px solid #1e293b; }
         .tab-bor th, .tab-bor td, .tab-prod th, .tab-prod td { border: 1px solid #cbd5e1; padding: 6px 2px; text-align: center; }
         .header-azul { background-color: #1e3a8a !important; color: white !important; font-weight: bold; text-transform: uppercase; }
-        .logo-box { width: 180px; height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        
+        /* LOGOS AJUSTADOS */
+        .logo-box { width: 250px; height: 90px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
         .faixa-indicadores { background-color: #1e3a8a; color: white; display: flex; justify-content: space-around; padding: 12px; margin-bottom: 5px; border-radius: 4px; }
         .ind-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.2); flex: 1; }
         .ind-value { font-size: 15px; font-weight: 800; display: block; }
         textarea { width: 100%; height: 90px; resize: none; border: 1px solid #e2e8f0; font-size: 11px; padding: 8px; border-radius: 4px; line-height: 1.4; }
-        .btnFonte { padding: 2px 5px; font-size: 9px; border: 1px solid #cbd5e1; background: #fff; border-radius: 3px; cursor: pointer; font-weight: bold; color: #1e3a8a; }
         #modalConfig { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; }
         .sub-header-data { font-size: 8px; font-weight: bold; display: block; opacity: 0.8; }
         @media print { .no-print { display: none !important; } .painel-container { border: none; margin: 0; width: 100%; box-shadow: none; } }
@@ -39,7 +41,7 @@
 
     <nav id="sidebar" class="bg-slate-900 flex flex-col text-white shadow-xl no-print">
         <div class="p-4 mb-6 border-b border-slate-700 flex items-center gap-4">
-            <span class="text-xl">📊</span><span class="menu-label uppercase">Painel de Bordo</span>
+            <span class="text-xl">📊</span><span class="menu-label uppercase">Painel Gerdau</span>
         </div>
         <div class="flex flex-col gap-4 px-3">
             <button onclick="irPara('principal')" class="p-3 hover:bg-slate-700 rounded flex items-center gap-4 transition text-left">
@@ -69,20 +71,20 @@
 
     <main class="flex-1 ml-[60px]">
         <div id="telaPrincipal" class="painel-container">
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-between items-center mb-4 min-h-[100px]">
                 <div class="logo-box">
-                    <a href="https://www.kaeferteckma.com.br/" target="_blank">
+                 <a href="https://www.kaeferteckma.com.br/" target="_blank">
                         <img src="https://i.imgur.com/d59sokh.png" alt="Logo Teckma">
                     </a>
                 </div>
                 
-                <div class="text-center">
+                <div class="text-center flex-1">
                     <h1 class="text-3xl font-black uppercase tracking-tight text-blue-900">Painel de Bordo</h1>
-                    <p id="dspClienteObra" class="text-[11px] font-bold text-slate-500 uppercase">CLIENTE | OBRA</p>
+                    <p id="dspClienteObra" class="text-[11px] font-bold text-slate-500 uppercase">GERDAU | MOGI DAS CRUZES</p>
                 </div>
 
                 <div class="logo-box">
-                    <img src="https://i.postimg.cc/vmD1STXx/gerdau-logo.jpg" alt="Logo Cliente">
+                    <img src="https://i.postimg.cc/vmD1STXx/gerdau-logo.jpg">
                 </div>
             </div>
 
@@ -129,23 +131,11 @@
             <div class="grid grid-cols-12 gap-6">
                 <div class="col-span-4 flex flex-col gap-4">
                     <div class="border p-3 bg-slate-50 rounded shadow-sm">
-                        <div class="flex justify-between items-center mb-1">
-                            <p class="text-[9px] font-bold uppercase">Análise de Planejamento</p>
-                            <div class="flex gap-1 no-print">
-                                <button onclick="ajustarFonte('obsPlan', 9)" class="btnFonte">9</button>
-                                <button onclick="ajustarFonte('obsPlan', 11)" class="btnFonte">11</button>
-                            </div>
-                        </div>
+                        <p class="text-[9px] font-bold uppercase mb-1">Análise de Planejamento</p>
                         <textarea id="obsPlan" onblur="salvarObs()"></textarea>
                     </div>
                     <div class="border p-3 bg-slate-50 rounded shadow-sm">
-                        <div class="flex justify-between items-center mb-1">
-                            <p class="text-[9px] font-bold uppercase">Gestão de Engenharia</p>
-                            <div class="flex gap-1 no-print">
-                                <button onclick="ajustarFonte('obsEng', 9)" class="btnFonte">9</button>
-                                <button onclick="ajustarFonte('obsEng', 11)" class="btnFonte">11</button>
-                            </div>
-                        </div>
+                        <p class="text-[9px] font-bold uppercase mb-1">Gestão de Engenharia</p>
                         <textarea id="obsEng" onblur="salvarObs()"></textarea>
                     </div>
                 </div>
@@ -154,21 +144,14 @@
                 </div>
             </div>
         </div>
-
+        
         <div id="telaProdutividade" class="painel-container hidden">
-            <h2 class="text-2xl font-black text-blue-900 uppercase border-b-4 border-blue-900 mb-6 pb-2">Estudo de Produtividade Semanal</h2>
+            <h2 class="text-2xl font-black text-blue-900 uppercase border-b-4 border-blue-900 mb-6 pb-2">Estudo de Produtividade - Gerdau</h2>
             <div id="gridResumoProd" class="grid grid-cols-4 gap-4 mb-6"></div>
             <table class="tab-prod">
                 <thead class="header-azul">
                     <tr>
-                        <th class="py-2">Semana</th>
-                        <th>HH Gasto Acum.</th>
-                        <th>HH Agregado Acum.</th>
-                        <th>HH Gasto Semana</th>
-                        <th>HH Agregado Semana</th>
-                        <th>Produtividade</th>
-                        <th>Horas Perdidas</th>
-                        <th>Acumulado</th>
+                        <th>Semana</th><th>HH Gasto Acm.</th><th>HH Agregado Acm.</th><th>HH Gasto Sem.</th><th>HH Agregado Sem.</th><th>Produtividade</th><th>Horas Perdidas</th><th>Acumulado</th>
                     </tr>
                 </thead>
                 <tbody id="corpoEstudoProdutividade"></tbody>
@@ -178,7 +161,7 @@
 
     <div id="modalConfig">
         <div class="bg-white p-8 rounded shadow-2xl w-[450px]">
-            <h2 class="text-xl font-bold mb-6 uppercase text-blue-900 border-b-2 border-blue-900 pb-2">Configuração do Projeto</h2>
+            <h2 class="text-xl font-bold mb-6 uppercase text-blue-900 border-b-2 border-blue-900 pb-2">Configuração Gerdau</h2>
             <div class="space-y-4 text-xs font-bold text-slate-600">
                 <div><label>CLIENTE:</label><input type="text" id="cfgCliente" class="w-full border p-2 mt-1 rounded"></div>
                 <div><label>OBRA:</label><input type="text" id="cfgObra" class="w-full border p-2 mt-1 rounded"></div>
@@ -189,28 +172,29 @@
                 <div><label>HH TOTAL CONTRATO:</label><input type="number" id="cfgHH" class="w-full border p-2 mt-1 rounded"></div>
             </div>
             <div class="flex gap-4 mt-8">
-                <button onclick="salvarConfig()" class="flex-1 bg-blue-900 text-white p-3 font-bold uppercase rounded">Sincronizar Nuvem</button>
+                <button onclick="salvarConfig()" class="flex-1 bg-blue-900 text-white p-3 font-bold uppercase rounded">Salvar Gerdau</button>
                 <button onclick="document.getElementById('modalConfig').style.display='none'" class="flex-1 bg-slate-200 p-3 font-bold uppercase rounded">Sair</button>
             </div>
         </div>
     </div>
 
 <script>
-    // FIREBASE CONFIG
+    // FIREBASE GERDAU - CONFIGURAÇÃO ISOLADA
     const firebaseConfig = {
-      apiKey: "AIzaSyAW35OKtqp0sp6vBgC3QsDyB31nfO6gQyo",
-      authDomain: "painel-de-bordo-3f96a.firebaseapp.com",
-      databaseURL: "https://painel-de-bordo-3f96a-default-rtdb.firebaseio.com",
-      projectId: "painel-de-bordo-3f96a",
-      storageBucket: "painel-de-bordo-3f96a.firebasestorage.app"
+      apiKey: "AIzaSyCfybt3i0VMxIyA9p1bPh8jNIptY-KnosI",
+      authDomain: "painel-de-bordo-gerdau.firebaseapp.com",
+      databaseURL: "https://painel-de-bordo-gerdau-default-rtdb.firebaseio.com",
+      projectId: "painel-de-bordo-gerdau",
+      storageBucket: "painel-de-bordo-gerdau.firebasestorage.app"
     };
+    
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
+    // Restante da lógica (curva, efetivo, chart, etc) conforme original
     let curva = [], efetivo = [], chartInstance = null;
     Chart.register(ChartDataLabels);
 
-    function ajustarFonte(id, tamanho) { document.getElementById(id).style.fontSize = tamanho + 'px'; }
     function irPara(tela) {
         document.getElementById('telaPrincipal').classList.toggle('hidden', tela !== 'principal');
         document.getElementById('telaProdutividade').classList.toggle('hidden', tela !== 'produtividade');
@@ -237,10 +221,7 @@
                 const u = curva.filter(x => x.Avanco_Realizado_Perc != null).pop();
                 el.value = u ? u.Semana : s[0];
             }
-            carregarObsSemana(el.value);
-            processarPainel();
-            renderizarGrafico();
-            gerarEstudoProdutividade();
+            carregarObsSemana(el.value); processarPainel(); renderizarGrafico(); gerarEstudoProdutividade();
         }
     });
 
@@ -251,7 +232,7 @@
                 const bstr = evt.target.result;
                 const wb = XLSX.read(bstr, {type:'binary'});
                 const data = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-                db.ref('painel/' + pathDb).set(data).then(() => alert(pathDb.toUpperCase() + " sincronizado!"));
+                db.ref('painel/' + pathDb).set(data).then(() => alert(pathDb.toUpperCase() + " Sincronizado na Gerdau!"));
             };
             reader.readAsBinaryString(e.target.files[0]);
         };
@@ -272,34 +253,25 @@
         });
     }
 
-    document.getElementById('selSemana').onchange = (e) => {
-        carregarObsSemana(e.target.value);
-        processarPainel();
-        renderizarGrafico();
-    };
+    document.getElementById('selSemana').onchange = (e) => { carregarObsSemana(e.target.value); processarPainel(); renderizarGrafico(); };
 
     function processarPainel() {
         const sSel = document.getElementById('selSemana').value;
         if(!curva.length || !sSel) return;
-
         const hhContrato = parseFloat(document.getElementById('cfgHH').value) || 0;
         const dIni = new Date(document.getElementById('cfgInicio').value + "T12:00:00");
         const dFim = new Date(document.getElementById('cfgFim').value + "T12:00:00");
         const nSem = parseInt(sSel.replace(/\D/g,''));
-
         const dSegunda = new Date(dIni);
         dSegunda.setDate(dIni.getDate() + (dIni.getDay() === 0 ? -6 : 1 - dIni.getDay()) + (nSem * 7));
-
         ['dt-seg','dt-ter','dt-qua','dt-qui','dt-sex','dt-sab','dt-dom'].forEach((id, idx) => {
             let d = new Date(dSegunda); d.setDate(dSegunda.getDate() + idx);
             document.getElementById(id).innerText = d.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit'});
         });
-
         const dDom = new Date(dSegunda); dDom.setDate(dSegunda.getDate() + 6);
         const prazoTotal = Math.floor((dFim - dIni) / 86400000) + 1;
         const hoje = new Date();
         const diasCorridos = Math.floor(((hoje < dDom ? hoje : dDom) - dIni) / 86400000) + 1;
-
         document.getElementById('stDataInicio').innerText = dIni.toLocaleDateString('pt-BR');
         document.getElementById('stDataFim').innerText = dFim.toLocaleDateString('pt-BR');
         document.getElementById('stPrazo').innerText = prazoTotal + " DIAS";
@@ -308,13 +280,11 @@
         document.getElementById('stHH').innerText = hhContrato.toLocaleString('pt-BR');
         document.getElementById('dspTempoPerc').innerText = ((diasCorridos / prazoTotal) * 100).toFixed(1) + "%";
         document.getElementById('dspDataDomingo').innerText = dDom.toLocaleDateString('pt-BR');
-
         const cAnt = curva.filter(x => parseInt(x.Semana.replace(/\D/g,'')) < nSem);
         const rAnt = cAnt.reduce((a,c)=>a+(parseFloat(c.Avanco_Realizado_Perc)||0),0);
         const pAnt = cAnt.reduce((a,c)=>a+(parseFloat(c.Avanco_Previsto_Perc)||0),0);
         const hrAnt = efetivo.filter(x => parseInt(x.Semana.replace(/\D/g,'')) < nSem).reduce((a,c)=>a+(parseFloat(c.HH_Real)||0),0);
         const haAnt = rAnt * hhContrato;
-
         let sP=0, sR=0, sHR=0, sHA=0, rP=[], rR=[], rHR=[], rHA=[], rProd=[];
         ['Seg','Ter','Qua','Qui','Sex','Sab','Dom'].forEach(d => {
             const c = curva.find(x => x.Semana === sSel && x.Dia.startsWith(d)) || {};
@@ -325,29 +295,17 @@
             rP.push(vp); rR.push(vr); rHR.push(vhr); rHA.push(vha);
             rProd.push(vhr > 0 ? (vha / vhr) : 0);
         });
-
         const prodAcm = (hrAnt+sHR) > 0 ? ((haAnt+sHA)/(hrAnt+sHR)) : 0;
         const prodSem = sHR > 0 ? (sHA / sHR) : 0;
-
         const f = (v, p=false) => v === 0 ? '-' : (p ? (v*100).toFixed(2)+'%' : v.toLocaleString('pt-BR', {maximumFractionDigits:0}));
         const cCol = v => v >= 1 ? 'text-green-600' : 'text-red-600';
-
         document.getElementById('corpoTabela').innerHTML = `
             <tr class="font-bold"><td>Avanço %</td><td>Previsto</td><td class="text-slate-500 font-normal">${f(pAnt,true)}</td>${rP.map(v=>`<td class="font-normal text-slate-500">${f(v,true)}</td>`).join('')}<td>${f(sP,true)}</td><td class="bg-slate-100">${f(pAnt+sP,true)}</td></tr>
             <tr class="font-bold text-green-600"><td>Avanço %</td><td>Realizado</td><td>${f(rAnt,true)}</td>${rR.map(v=>`<td class="font-normal">${f(v,true)}</td>`).join('')}<td>${f(sR,true)}</td><td class="bg-green-50">${f(rAnt+sR,true)}</td></tr>
-            
-            <tr class="bg-slate-50 italic font-bold">
-                <td colspan="2" class="text-left px-2 uppercase">Produtividade</td>
-                <td class="${cCol(haAnt/hrAnt)}">${hrAnt > 0 ? (haAnt/hrAnt*100).toFixed(1)+'%' : '-'}</td>
-                ${rProd.map(v => `<td class="${cCol(v)}">${v > 0 ? (v*100).toFixed(1)+'%' : '-'}</td>`).join('')}
-                <td class="${cCol(prodSem)}">${prodSem > 0 ? (prodSem*100).toFixed(1)+'%' : '-'}</td>
-                <td class="bg-slate-200 ${cCol(prodAcm)}">${(prodAcm*100).toFixed(1)}%</td>
-            </tr>
-
+            <tr class="bg-slate-50 italic font-bold"><td colspan="2" class="text-left px-2 uppercase">Produtividade</td><td class="${cCol(haAnt/hrAnt)}">${hrAnt > 0 ? (haAnt/hrAnt*100).toFixed(1)+'%' : '-'}</td>${rProd.map(v => `<td class="${cCol(v)}">${v > 0 ? (v*100).toFixed(1)+'%' : '-'}</td>`).join('')}<td class="${cCol(prodSem)}">${prodSem > 0 ? (prodSem*100).toFixed(1)+'%' : '-'}</td><td class="bg-slate-200 ${cCol(prodAcm)}">${(prodAcm*100).toFixed(1)}%</td></tr>
             <tr><td colspan="2" class="text-left px-2 font-bold uppercase">HH Agregado</td><td>${f(haAnt)}</td>${rHA.map(v=>`<td>${f(v)}</td>`).join('')}<td>${f(sHA)}</td><td class="bg-slate-50 font-bold">${f(haAnt+sHA)}</td></tr>
             <tr class="bg-blue-50/30"><td colspan="2" class="text-left px-2 font-bold uppercase">HH Real</td><td>${f(hrAnt)}</td>${rHR.map(v=>`<td>${f(v)}</td>`).join('')}<td>${f(sHR)}</td><td class="bg-blue-100 font-bold">${f(hrAnt+sHR)}</td></tr>
         `;
-
         document.getElementById('dspAvancoReal').innerText = f(rAnt+sR, true);
         document.getElementById('dspHHRealAcm').innerText = (hrAnt+sHR).toLocaleString('pt-BR', {minimumFractionDigits:2});
         document.getElementById('dspProdAcum').innerText = (prodAcm*100).toFixed(1) + "%";
@@ -360,7 +318,6 @@
         const sSel = document.getElementById('selSemana').value;
         const nSemSel = parseInt(sSel.replace(/\D/g,'') || 0);
         const todasSemanas = [...new Set(curva.map(x => x.Semana))].sort((a,b)=> parseInt(a.replace(/\D/g,'')) - parseInt(b.replace(/\D/g,'')));
-
         let prevAcm = 0, realAcm = 0, dP = [], dR = [];
         todasSemanas.forEach((sem, index) => {
             const d = curva.filter(x => x.Semana === sem);
@@ -371,18 +328,8 @@
                 dR.push(parseFloat((realAcm * 100).toFixed(2)));
             }
         });
-
         if(chartInstance) chartInstance.destroy();
-        chartInstance = new Chart(ctx, {
-            type: 'line',
-            data: { labels: todasSemanas, datasets: [
-                { label: 'Planejado', data: dP, borderColor: '#94a3b8', borderDash: [5,5], pointRadius: 0, tension: 0.1, fill: false },
-                { label: 'Realizado', data: dR, borderColor: '#10b981', borderWidth: 3, pointRadius: 3, tension: 0.1, fill: false }
-            ]},
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, datalabels: { display: false } },
-                scales: { x: { boundaryGap: false }, y: { min: 0, max: 100, ticks: { callback: v => v + '%' } } }
-            }
-        });
+        chartInstance = new Chart(ctx, { type: 'line', data: { labels: todasSemanas, datasets: [ { label: 'Planejado', data: dP, borderColor: '#94a3b8', borderDash: [5,5], pointRadius: 0, tension: 0.1, fill: false }, { label: 'Realizado', data: dR, borderColor: '#10b981', borderWidth: 3, pointRadius: 3, tension: 0.1, fill: false } ]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, datalabels: { display: false } }, scales: { x: { boundaryGap: false }, y: { min: 0, max: 100, ticks: { callback: v => v + '%' } } } } });
     }
 
     function gerarEstudoProdutividade() {
@@ -390,7 +337,6 @@
         const hhTotal = parseFloat(document.getElementById('cfgHH').value) || 0;
         const semanas = [...new Set(curva.map(x=>x.Semana))].sort((a,b)=> parseInt(a.replace(/\D/g,'')) - parseInt(b.replace(/\D/g,'')));
         let html = "", acmGasto = 0, acmAgregado = 0, totalPerdidas = 0;
-        
         semanas.forEach(sem => {
             const realSem = curva.filter(x => x.Semana === sem).reduce((a,c) => a + (parseFloat(c.Avanco_Realizado_Perc)||0), 0);
             const gastoSem = efetivo.filter(x => x.Semana === sem).reduce((a,c) => a + (parseFloat(c.HH_Real)||0), 0);
@@ -403,20 +349,17 @@
             html += `<tr><td class="font-bold">${sem}</td><td>${fNum(acmGasto)}</td><td>${fNum(acmAgregado)}</td><td>${fNum(gastoSem)}</td><td>${fNum(agregSem)}</td><td class="font-bold ${(prodSem < 1 ? 'text-red-600' : 'text-green-600')}">${(prodSem*100).toFixed(1)}%</td><td class="text-red-500">${perdSem > 0 ? fNum(perdSem) : '-'}</td><td class="font-bold">${(acmAgregado/acmGasto*100).toFixed(1)}%</td></tr>`;
         });
         document.getElementById('corpoEstudoProdutividade').innerHTML = html;
-        document.getElementById('gridResumoProd').innerHTML = `
-            <div class="bg-blue-50 p-4 border-l-4 border-blue-900 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">HH Gasto Total</span><div class="text-xl font-black">${fNum(acmGasto)}</div></div>
-            <div class="bg-green-50 p-4 border-l-4 border-green-600 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">HH Agregado Total</span><div class="text-xl font-black">${fNum(acmAgregado)}</div></div>
-            <div class="bg-slate-50 p-4 border-l-4 border-slate-900 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Produtividade Geral</span><div class="text-xl font-black text-blue-900">${(acmGasto > 0 ? (acmAgregado/acmGasto*100).toFixed(1) : 0)}%</div></div>
-            <div class="bg-red-50 p-4 border-l-4 border-red-600 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Total Horas Perdidas</span><div class="text-xl font-black text-red-600">${fNum(totalPerdidas)}</div></div>`;
+        document.getElementById('gridResumoProd').innerHTML = `<div class="bg-blue-50 p-4 border-l-4 border-blue-900 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">HH Gasto Total</span><div class="text-xl font-black">${fNum(acmGasto)}</div></div><div class="bg-green-50 p-4 border-l-4 border-green-600 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">HH Agregado Total</span><div class="text-xl font-black">${fNum(acmAgregado)}</div></div><div class="bg-slate-50 p-4 border-l-4 border-slate-900 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Produtividade Geral</span><div class="text-xl font-black text-blue-900">${(acmGasto > 0 ? (acmAgregado/acmGasto*100).toFixed(1) : 0)}%</div></div><div class="bg-red-50 p-4 border-l-4 border-red-600 rounded shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase">Total Horas Perdidas</span><div class="text-xl font-black text-red-600">${fNum(totalPerdidas)}</div></div>`;
     }
-
     const fNum = v => v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+    
     function salvarConfig() {
         const c = { cliente: document.getElementById('cfgCliente').value, obra: document.getElementById('cfgObra').value, inicio: document.getElementById('cfgInicio').value, fim: document.getElementById('cfgFim').value, hh: document.getElementById('cfgHH').value };
-        db.ref('painel/config').update(c).then(() => { document.getElementById('modalConfig').style.display = 'none'; alert("Sincronizado!"); });
+        db.ref('painel/config').update(c).then(() => { document.getElementById('modalConfig').style.display = 'none'; alert("Configuração Gerdau Salva!"); });
     }
+    
     function gerarPDF() {
-        const opt = { margin: 5, filename: 'Relatorio_Painel.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' } };
+        const opt = { margin: 5, filename: 'Relatorio_Gerdau.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' } };
         html2pdf().set(opt).from(document.body).save();
     }
 </script>
